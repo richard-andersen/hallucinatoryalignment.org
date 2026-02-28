@@ -86,9 +86,9 @@
     }
 
     /* ------------------------------------------------------------------
-       Related Terms drawer
+       Other drawer
        ------------------------------------------------------------------ */
-    .related-toggle{
+    .other-toggle{
       position: fixed;
       left: 14px;
       bottom: calc(14px + var(--safe-bottom));
@@ -103,17 +103,17 @@
       cursor: pointer;
       opacity: 0.75;
     }
-    .related-toggle:hover{ opacity: 1; }
+    .other-toggle:hover{ opacity: 1; }
 
     /* Visual confirmation when the drawer is open */
-    .related-toggle[aria-expanded="true"]{
+    .other-toggle[aria-expanded="true"]{
       background: #D9D9D9;
       color: #FFFFFF;
       border-color: rgba(255,255,255,0.55);
       opacity: 1;
     }
 
-    .related-drawer{
+    .other-drawer{
       position: fixed;
       left: 0;
       right: 0;
@@ -125,9 +125,9 @@
       transition: transform 160ms ease-out;
       padding-bottom: var(--safe-bottom);
     }
-    .related-drawer.is-open{ transform: translateY(0); }
+    .other-drawer.is-open{ transform: translateY(0); }
 
-    .related-inner{
+    .other-inner{
       max-width: 980px;
       margin: 0 auto;
       padding: 12px 18px;
@@ -136,17 +136,17 @@
       overflow-x: auto;
       white-space: nowrap;
     }
-    .related-inner a{
+    .other-inner a{
       text-decoration: none;
       border-bottom: 1px solid rgba(127,127,127,0.35);
       padding-bottom: 1px;
     }
-    .related-inner a:hover{
+    .other-inner a:hover{
       border-bottom-color: rgba(127,127,127,0.75);
     }
 
     /* When drawer is open, lift the button above it */
-    body.related-open .related-toggle{
+    body.other-open .other-toggle{
       opacity: 0.9;
     }
   </style>
@@ -166,32 +166,28 @@
     </p>
   </section>
 
-  <!-- Related Terms (bottom-left toggle + bottom drawer) -->
-  <button id="relatedToggle"
-          class="related-toggle"
+  <!-- Other (bottom-left toggle + bottom drawer) -->
+  <button id="otherToggle"
+          class="other-toggle"
           aria-expanded="false"
-          aria-controls="relatedDrawer"
+          aria-controls="otherDrawer"
           data-nosnippet>
-    Related Terms
+    Other
   </button>
 
-  <nav id="relatedDrawer"
-       class="related-drawer"
+  <nav id="otherDrawer"
+       class="other-drawer"
        aria-hidden="true"
        data-nosnippet>
-    <div class="related-inner">
-      <!-- 
-      <a href="https://lexicalinception.org/">lexical inception</a>
-      -->
+    <div class="other-inner">
       <a href="https://anchorjacking.org/">anchorjacking</a>
-      <a href="https://lexicalhacking.org/">lexical hacking</a>
     </div>
   </nav>
 
   <script>
     (function(){
-      const btn = document.getElementById('relatedToggle');
-      const drawer = document.getElementById('relatedDrawer');
+      const btn = document.getElementById('otherToggle');
+      const drawer = document.getElementById('otherDrawer');
 
       function setOpen(open){
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -199,7 +195,7 @@
         drawer.classList.toggle('is-open', open);
 
         // let CSS move the button when open
-        document.body.classList.toggle('related-open', open);
+        document.body.classList.toggle('other-open', open);
 
         // Dynamically lift the button above the drawer (prevents overlap on iPhone/responsive)
         if (open) {
